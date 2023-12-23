@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import Logo from '../../../public/cypresslogo.svg';
+import Logo from '../../../public/Cortexlogo.svg';
 
 import {
     NavigationMenu,
@@ -70,12 +70,12 @@ const Header = () => {
             <Link href={'/'} className="w-full flex gap-2 justify-left items-center">
                 <Image
                     src={Logo}
-                    alt="Cypress Logo"
+                    alt="Cortex Logo"
                     width={25}
                     height={25}
                 />
                 <span className="font-semibold dark:text-white">
-                    cypress.
+                    Cortex.
                 </span>
             </Link>
             <NavigationMenu className="hidden md:block">
@@ -181,7 +181,7 @@ const Header = () => {
             <aside className="flex w-full gap-2 justify-end">
                 <Link href={'/login'}>
                     <Button
-                        variant="ghost"
+                        variant="btn-secondary"
                         className=" p-1 hidden sm:block"
                     >
                         Login
@@ -189,7 +189,7 @@ const Header = () => {
                 </Link>
                 <Link href="/signup">
                     <Button
-                        variant="outline"
+                        variant="btn-primary"
                         className="whitespace-nowrap"
                     >
                         Sign Up

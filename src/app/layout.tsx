@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import db from '@/lib/supabase/db'
 import { ThemeProvider } from '@/lib/providers/next-theme-provider'
+import { DM_Sans } from "next/font/google";
 
 const inter = Inter({ subsets: ['latin'] })
 
