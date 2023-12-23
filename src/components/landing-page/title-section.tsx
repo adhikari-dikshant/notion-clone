@@ -1,5 +1,4 @@
 import React from 'react';
-
 interface TitleSectionProps {
     title: string;
     subheading?: string;
