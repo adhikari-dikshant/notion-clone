@@ -1,13 +1,7 @@
 'use client';
 import { useSubscriptionModal } from '@/lib/providers/subscription-modal-provider';
 import React, { useState } from 'react';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '../ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
 import { useSupabaseUser } from '@/lib/providers/supabase-user-provider';
 import { formatPrice, postData } from '@/lib/utils';
 import { Button } from '../ui/button';
@@ -72,29 +66,29 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ products }) => {
           </DialogDescription>
           {products.length
             ? products.map((product) => (
-                <div
-                  className="
+              <div
+                className="
                   flex
                   justify-between
                   items-center
                   "
-                  key={product.id}
-                >
-                  {product.prices?.map((price) => (
-                    <React.Fragment key={price.id}>
-                      <b className="text-3xl text-foreground">
-                        {formatPrice(price)} / <small>{price.interval}</small>
-                      </b>
-                      <Button
-                        onClick={() => onClickContinue(price)}
-                        disabled={isLoading}
-                      >
-                        {isLoading ? <Loader /> : 'Upgrade ✨'}
-                      </Button>
-                    </React.Fragment>
-                  ))}
-                </div>
-              ))
+                key={product.id}
+              >
+                {product.prices?.map((price) => (
+                  <React.Fragment key={price.id}>
+                    <b className="text-3xl text-foreground">
+                      {formatPrice(price)} / <small>{price.interval}</small>
+                    </b>
+                    <Button
+                      onClick={() => onClickContinue(price)}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? <Loader /> : 'Upgrade ✨'}
+                    </Button>
+                  </React.Fragment>
+                ))}
+              </div>
+            ))
             : ''}
           {/* No Products Available */}
         </DialogContent>

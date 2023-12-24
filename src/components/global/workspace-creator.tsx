@@ -78,13 +78,7 @@ const WorkspaceCreator = () => {
         >
           Name
         </Label>
-        <div
-          className="flex 
-        justify-center 
-        items-center 
-        gap-2
-        "
-        >
+        <div className="flex justify-center items-center gap-2">
           <Input
             name="name"
             value={title}
@@ -115,14 +109,7 @@ const WorkspaceCreator = () => {
           <SelectContent>
             <SelectGroup>
               <SelectItem value="private">
-                <div
-                  className="p-2
-                  flex
-                  gap-4
-                  justify-center
-                  items-center
-                "
-                >
+                <div className="p-2 flex gap-4 justify-center items-center">
                   <Lock />
                   <article className="text-left flex flex-col">
                     <span>Private</span>
@@ -166,39 +153,18 @@ const WorkspaceCreator = () => {
             <span className="text-sm text-muted-foreground">
               Collaborators {collaborators.length || ''}
             </span>
-            <ScrollArea
-              className="
-            h-[120px]
-            overflow-y-scroll
-            w-full
-            rounded-md
-            border
-            border-muted-foreground/20"
-            >
+            <ScrollArea className=" h-[120px] overflow-y-scroll w-full rounded-md border border-muted-foreground/20" >
               {collaborators.length ? (
                 collaborators.map((c) => (
                   <div
-                    className="p-4 flex
-                      justify-between
-                      items-center
-                "
-                    key={c.id}
-                  >
+                    className="p-4 flex justify-between items-center" key={c.id}>
                     <div className="flex gap-4 items-center">
                       <Avatar>
                         <AvatarImage src="/avatars/7.png" />
                         <AvatarFallback>PJ</AvatarFallback>
                       </Avatar>
                       <div
-                        className="text-sm 
-                          gap-2
-                          text-muted-foreground
-                          overflow-hidden
-                          overflow-ellipsis
-                          sm:w-[300px]
-                          w-[140px]
-                        "
-                      >
+                        className="text-sm gap-2 text-muted-foreground overflow-hidden overflow-ellipsis sm:w-[300px] w-[140px]">
                         {c.email}
                       </div>
                     </div>
@@ -211,16 +177,7 @@ const WorkspaceCreator = () => {
                   </div>
                 ))
               ) : (
-                <div
-                  className="absolute
-                  right-0 left-0
-                  top-0
-                  bottom-0
-                  flex
-                  justify-center
-                  items-center
-                "
-                >
+                <div className="absolute right-0 left-0 top-0 bottom-0 flex justify-center items-center">
                   <span className="text-muted-foreground text-sm">
                     You have no collaborators
                   </span>

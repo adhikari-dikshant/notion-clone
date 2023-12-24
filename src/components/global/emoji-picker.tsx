@@ -3,11 +3,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
 interface EmojiPickerProps {
   children: React.ReactNode;
@@ -24,11 +20,7 @@ const EmojiPicker: React.FC<EmojiPickerProps> = ({ children, getValue }) => {
     <div className="flex items-center">
       <Popover>
         <PopoverTrigger className="cursor-pointer">{children}</PopoverTrigger>
-        <PopoverContent
-          className="p-0
-          border-none
-        "
-        >
+        <PopoverContent className="p-0 border-none">
           <Picker onEmojiClick={onClick} />
         </PopoverContent>
       </Popover>
