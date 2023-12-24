@@ -1,6 +1,13 @@
 'use client';
 
-import React, { Dispatch, createContext, useContext, useEffect, useMemo, useReducer } from 'react';
+import React, {
+  Dispatch,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from 'react';
 import { File, Folder, workspace } from '../supabase/supabase.types';
 import { usePathname } from 'next/navigation';
 import { getFiles } from '../supabase/queries';
@@ -18,54 +25,54 @@ type Action =
   | { type: 'ADD_WORKSPACE'; payload: appWorkspacesType }
   | { type: 'DELETE_WORKSPACE'; payload: string }
   | {
-    type: 'UPDATE_WORKSPACE';
-    payload: { workspace: Partial<appWorkspacesType>; workspaceId: string };
-  }
+      type: 'UPDATE_WORKSPACE';
+      payload: { workspace: Partial<appWorkspacesType>; workspaceId: string };
+    }
   | {
-    type: 'SET_WORKSPACES';
-    payload: { workspaces: appWorkspacesType[] | [] };
-  }
+      type: 'SET_WORKSPACES';
+      payload: { workspaces: appWorkspacesType[] | [] };
+    }
   | {
-    type: 'SET_FOLDERS';
-    payload: { workspaceId: string; folders: [] | appFoldersType[] };
-  }
+      type: 'SET_FOLDERS';
+      payload: { workspaceId: string; folders: [] | appFoldersType[] };
+    }
   | {
-    type: 'ADD_FOLDER';
-    payload: { workspaceId: string; folder: appFoldersType };
-  }
+      type: 'ADD_FOLDER';
+      payload: { workspaceId: string; folder: appFoldersType };
+    }
   | {
-    type: 'ADD_FILE';
-    payload: { workspaceId: string; file: File; folderId: string };
-  }
+      type: 'ADD_FILE';
+      payload: { workspaceId: string; file: File; folderId: string };
+    }
   | {
-    type: 'DELETE_FILE';
-    payload: { workspaceId: string; folderId: string; fileId: string };
-  }
+      type: 'DELETE_FILE';
+      payload: { workspaceId: string; folderId: string; fileId: string };
+    }
   | {
-    type: 'DELETE_FOLDER';
-    payload: { workspaceId: string; folderId: string };
-  }
+      type: 'DELETE_FOLDER';
+      payload: { workspaceId: string; folderId: string };
+    }
   | {
-    type: 'SET_FILES';
-    payload: { workspaceId: string; files: File[]; folderId: string };
-  }
+      type: 'SET_FILES';
+      payload: { workspaceId: string; files: File[]; folderId: string };
+    }
   | {
-    type: 'UPDATE_FOLDER';
-    payload: {
-      folder: Partial<appFoldersType>;
-      workspaceId: string;
-      folderId: string;
+      type: 'UPDATE_FOLDER';
+      payload: {
+        folder: Partial<appFoldersType>;
+        workspaceId: string;
+        folderId: string;
+      };
+    }
+  | {
+      type: 'UPDATE_FILE';
+      payload: {
+        file: Partial<File>;
+        folderId: string;
+        workspaceId: string;
+        fileId: string;
+      };
     };
-  }
-  | {
-    type: 'UPDATE_FILE';
-    payload: {
-      file: Partial<File>;
-      folderId: string;
-      workspaceId: string;
-      fileId: string;
-    };
-  };
 
 const initialState: AppState = { workspaces: [] };
 
@@ -273,12 +280,12 @@ const appReducer = (
 
 const AppStateContext = createContext<
   | {
-    state: AppState;
-    dispatch: Dispatch<Action>;
-    workspaceId: string | undefined;
-    folderId: string | undefined;
-    fileId: string | undefined;
-  }
+      state: AppState;
+      dispatch: Dispatch<Action>;
+      workspaceId: string | undefined;
+      folderId: string | undefined;
+      fileId: string | undefined;
+    }
   | undefined
 >(undefined);
 
