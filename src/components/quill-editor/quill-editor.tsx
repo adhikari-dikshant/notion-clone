@@ -1,33 +1,12 @@
 'use client';
 import { useAppState } from '@/lib/providers/state-provider';
 import { File, Folder, workspace } from '@/lib/supabase/supabase.types';
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import 'quill/dist/quill.snow.css';
 import { Button } from '../ui/button';
-import {
-  deleteFile,
-  deleteFolder,
-  findUser,
-  getFileDetails,
-  getFolderDetails,
-  getWorkspaceDetails,
-  updateFile,
-  updateFolder,
-  updateWorkspace,
-} from '@/lib/supabase/queries';
+import { deleteFile, deleteFolder, findUser, getFileDetails, getFolderDetails, getWorkspaceDetails, updateFile, updateFolder, updateWorkspace } from '@/lib/supabase/queries';
 import { usePathname, useRouter } from 'next/navigation';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '../ui/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Badge } from '../ui/badge';
 import Image from 'next/image';
@@ -495,7 +474,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
           email: user.email?.split('@')[0],
           avatarUrl: response.avatarUrl
             ? supabase.storage.from('avatars').getPublicUrl(response.avatarUrl)
-                .data.publicUrl
+              .data.publicUrl
             : '',
         });
       });
@@ -508,38 +487,15 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
     <>
       <div className="relative">
         {details.inTrash && (
-          <article
-            className="py-2 
-          z-40 
-          bg-[#EB5757] 
-          flex  
-          md:flex-row 
-          flex-col 
-          justify-center 
-          items-center 
-          gap-4 
-          flex-wrap"
-          >
-            <div
-              className="flex 
-            flex-col 
-            md:flex-row 
-            gap-2 
-            justify-center 
-            items-center"
-            >
+          <article className="py-2  z-40  bg-[#EB5757]  flex   md:flex-row  flex-col  justify-center  items-center  gap-4  flex-wrap" >
+            <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
               <span className="text-white">
                 This {dirType} is in the trash.
               </span>
               <Button
                 size="sm"
                 variant="outline"
-                className="bg-transparent
-                border-white
-                text-white
-                hover:bg-white
-                hover:text-[#EB5757]
-                "
+                className="bg-transparent border-white text-white hover:bg-white hover:text-[#EB5757]"
                 onClick={restoreFileHandler}
               >
                 Restore
@@ -548,12 +504,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
               <Button
                 size="sm"
                 variant="outline"
-                className="bg-transparent
-                border-white
-                text-white
-                hover:bg-white
-                hover:text-[#EB5757]
-                "
+                className="bg-transparent border-white text-white hover:bg-white hover:text-[#EB5757]"
                 onClick={deleteFileHandler}
               >
                 Delete
@@ -562,16 +513,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
             <span className="text-sm text-white">{details.inTrash}</span>
           </article>
         )}
-        <div
-          className="flex 
-        flex-col-reverse 
-        sm:flex-row 
-        sm:justify-between 
-        justify-center 
-        sm:items-center 
-        sm:p-2 
-        p-8"
-        >
+        <div className="flex flex-col-reverse sm:flex-row sm:justify-between justify-center sm:items-center sm:p-2 p-8">
           <div>{breadCrumbs}</div>
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-center h-10">
@@ -579,20 +521,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
                 <TooltipProvider key={collaborator.id}>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Avatar
-                        className="
-                    -ml-3 
-                    bg-background 
-                    border-2 
-                    flex 
-                    items-center 
-                    justify-center 
-                    border-white 
-                    h-8 
-                    w-8 
-                    rounded-full
-                    "
-                      >
+                      <Avatar className="-ml-3 bg-background border-2 flex items-center justify-center  border-white h-8 w-8 rounded-full">
                         <AvatarImage
                           src={
                             collaborator.avatarUrl ? collaborator.avatarUrl : ''
@@ -612,24 +541,13 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
             {saving ? (
               <Badge
                 variant="secondary"
-                className="bg-orange-600 top-4
-                text-white
-                right-4
-                z-50
-                "
-              >
+                className="bg-orange-600 top-4  text-white right-4 z-50 ">
                 Saving...
               </Badge>
             ) : (
               <Badge
                 variant="secondary"
-                className="bg-emerald-600 
-                top-4
-              text-white
-              right-4
-              z-50
-              "
-              >
+                className="bg-emerald-600 top-4  text-white right-4 z-50 ">
                 Saved
               </Badge>
             )}
@@ -645,44 +563,16 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
                 .getPublicUrl(details.bannerUrl).data.publicUrl
             }
             fill
-            className="w-full md:h-48
-            h-20
-            object-cover"
+            className="w-full md:h-48 h-20 object-cover"
             alt="Banner Image"
           />
         </div>
       )}
-      <div
-        className="flex 
-        justify-center
-        items-center
-        flex-col
-        mt-2
-        relative
-      "
-      >
-        <div
-          className="w-full 
-        self-center 
-        max-w-[800px] 
-        flex 
-        flex-col
-         px-7 
-         lg:my-8"
-        >
+      <div className="flex justify-center items-center flex-col mt-2 relative">
+        <div className="w-full self-center max-w-[800px] flex flex-col px-7 lg:my-8">
           <div className="text-[80px]">
             <EmojiPicker getValue={iconOnChange}>
-              <div
-                className="w-[100px]
-                cursor-pointer
-                transition-colors
-                h-[100px]
-                flex
-                items-center
-                justify-center
-                hover:bg-muted
-                rounded-xl"
-              >
+              <div className="w-[100px] cursor-pointer transition-colors h-[100px] flex items-center justify-center hover:bg-muted rounded-xl">
                 {details.iconId}
               </div>
             </EmojiPicker>
@@ -691,14 +581,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
             <BannerUpload
               id={fileId}
               dirType={dirType}
-              className="mt-2
-              text-sm
-              text-muted-foreground
-              p-2
-              hover:text-card-foreground
-              transition-all
-              rounded-md"
-            >
+              className="mt-2 text-sm text-muted-foreground p-2 hover:text-card-foreground transition-all rounded-md">
               {details.bannerUrl ? 'Update Banner' : 'Add Banner'}
             </BannerUpload>
             {details.bannerUrl && (
@@ -706,16 +589,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
                 disabled={deletingBanner}
                 onClick={deleteBanner}
                 variant="ghost"
-                className="gap-2 hover:bg-background
-                flex
-                item-center
-                justify-center
-                mt-2
-                text-sm
-                text-muted-foreground
-                w-36
-                p-2
-                rounded-md"
+                className="gap-2 hover:bg-background flex item-center justify-center mt-2 text-sm text-muted-foreground w-36 p-2 rounded-md"
               >
                 <XCircleIcon size={16} />
                 <span className="whitespace-nowrap font-normal">
@@ -724,14 +598,7 @@ const QuillEditor: React.FC<QuillEditorProps> = ({
               </Button>
             )}
           </div>
-          <span
-            className="
-            text-muted-foreground
-            text-3xl
-            font-bold
-            h-9
-          "
-          >
+          <span className=" text-muted-foreground text-3xl font-bold h-9">
             {details.title}
           </span>
           <span className="text-muted-foreground text-sm">

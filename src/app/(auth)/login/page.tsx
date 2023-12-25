@@ -5,17 +5,10 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormSchema } from '@/lib/types';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormMessage,
-} from '@/components/ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '../../../../public/cypresslogo.svg';
+import Logo from '../../../../public/cortexlogo.svg';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Loader from '@/components/global/Loader';
@@ -47,38 +40,23 @@ const LoginPage = () => {
 
   return (
     <Form {...form}>
-      <form
-        onChange={() => {
-          if (submitError) setSubmitError('');
-        }}
+      <form onChange={() => {
+        if (submitError) setSubmitError('');
+      }}
         onSubmit={form.handleSubmit(onSubmit)}
-        className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col"
-      >
-        <Link
-          href="/"
-          className="
-          w-full
-          flex
-          justify-left
-          items-center"
-        >
+        className="w-full sm:justify-center sm:w-[400px] space-y-6 flex flex-col">
+        <Link href="/" className="w-full flex justify-left items-center">
           <Image
             src={Logo}
-            alt="cypress Logo"
+            alt="cortex Logo"
             width={50}
             height={50}
           />
-          <span
-            className="font-semibold
-          dark:text-white text-4xl first-letter:ml-2"
-          >
-            cypress.
+          <span className="font-semibold dark:text-white text-4xl first-letter:ml-2">
+            cortex.
           </span>
         </Link>
-        <FormDescription
-          className="
-        text-foreground/60"
-        >
+        <FormDescription className="text-foreground/60">
           An all-In-One Collaboration and Productivity Platform
         </FormDescription>
         <FormField
@@ -126,10 +104,7 @@ const LoginPage = () => {
         </Button>
         <span className="self-container">
           Dont have an account?{' '}
-          <Link
-            href="/signup"
-            className="text-primary"
-          >
+          <Link href="/signup" className="text-primary">
             Sign Up
           </Link>
         </span>

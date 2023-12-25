@@ -2,7 +2,6 @@ import { stripe } from '@/lib/stripe';
 import { createOrRetrieveCustomer } from '@/lib/stripe/adminTasks';
 import { getURL } from '@/lib/utils';
 import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 

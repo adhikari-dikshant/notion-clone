@@ -6,53 +6,21 @@ import { User, workspace } from '@/lib/supabase/supabase.types';
 import { useSupabaseUser } from '@/lib/providers/supabase-user-provider';
 import { useRouter } from 'next/navigation';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import {
-  Briefcase,
-  CreditCard,
-  ExternalLink,
-  Lock,
-  LogOut,
-  Plus,
-  Share,
-  User as UserIcon,
-} from 'lucide-react';
+import { Briefcase, CreditCard, ExternalLink, Lock, LogOut, Plus, Share, User as UserIcon } from 'lucide-react';
 import { Separator } from '../ui/separator';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
-import {
-  addCollaborators,
-  deleteWorkspace,
-  getCollaborators,
-  removeCollaborators,
-  updateWorkspace,
-} from '@/lib/supabase/queries';
+import { addCollaborators, deleteWorkspace, getCollaborators, removeCollaborators, updateWorkspace } from '@/lib/supabase/queries';
 import { v4 } from 'uuid';
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 
 import CollaboratorSearch from '../global/collaborator-search';
 import { Button } from '../ui/button';
 import { ScrollArea } from '../ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Alert, AlertDescription } from '../ui/alert';
-import CypressProfileIcon from '../icons/cypressProfileIcon';
+import ProfileIcon from '../icons/ProfileIcon';
 import LogoutButton from '../global/logout-button';
 import Link from 'next/link';
 import { useSubscriptionModal } from '@/lib/providers/subscription-modal-provider';
@@ -240,14 +208,7 @@ const SettingsForm = () => {
           <SelectContent>
             <SelectGroup>
               <SelectItem value="private">
-                <div
-                  className="p-2
-                  flex
-                  gap-4
-                  justify-center
-                  items-center
-                "
-                >
+                <div className="p-2 flex gap-4 justify-center items-center">
                   <Lock />
                   <article className="text-left flex flex-col">
                     <span>Private</span>
@@ -291,39 +252,16 @@ const SettingsForm = () => {
               <span className="text-sm text-muted-foreground">
                 Collaborators {collaborators.length || ''}
               </span>
-              <ScrollArea
-                className="
-            h-[120px]
-            overflow-y-scroll
-            w-full
-            rounded-md
-            border
-            border-muted-foreground/20"
-              >
+              <ScrollArea className="h-[120px] overflow-y-scroll w-full rounded-md border border-muted-foreground/20">
                 {collaborators.length ? (
                   collaborators.map((c) => (
-                    <div
-                      className="p-4 flex
-                      justify-between
-                      items-center
-                "
-                      key={c.id}
-                    >
+                    <div className="p-4 flex justify-between items-center" key={c.id}>
                       <div className="flex gap-4 items-center">
                         <Avatar>
                           <AvatarImage src="/avatars/7.png" />
                           <AvatarFallback>PJ</AvatarFallback>
                         </Avatar>
-                        <div
-                          className="text-sm 
-                          gap-2
-                          text-muted-foreground
-                          overflow-hidden
-                          overflow-ellipsis
-                          sm:w-[300px]
-                          w-[140px]
-                        "
-                        >
+                        <div className="text-sm gap-2 text-muted-foreground overflow-hidden overflow-ellipsis sm:w-[300px] w-[140px]">
                           {c.email}
                         </div>
                       </div>
@@ -336,16 +274,7 @@ const SettingsForm = () => {
                     </div>
                   ))
                 ) : (
-                  <div
-                    className="absolute
-                  right-0 left-0
-                  top-0
-                  bottom-0
-                  flex
-                  justify-center
-                  items-center
-                "
-                  >
+                  <div className="absolute right-0 left-0 top-0 bottom-0 flex justify-center items-center">
                     <span className="text-muted-foreground text-sm">
                       You have no collaborators
                     </span>
@@ -364,11 +293,7 @@ const SettingsForm = () => {
             type="submit"
             size={'sm'}
             variant={'destructive'}
-            className="mt-4 
-            text-sm
-            bg-destructive/40 
-            border-2 
-            border-destructive"
+            className="mt-4 text-sm bg-destructive/40 border-2 border-destructive"
             onClick={async () => {
               if (!workspaceId) return;
               await deleteWorkspace(workspaceId);
@@ -388,7 +313,7 @@ const SettingsForm = () => {
           <Avatar>
             <AvatarImage src={''} />
             <AvatarFallback>
-              <CypressProfileIcon />
+              <ProfileIcon />
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col ml-6">

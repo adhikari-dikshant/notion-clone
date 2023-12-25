@@ -1,7 +1,7 @@
 'use client';
 import { Menu } from 'lucide-react';
 import React, { useState } from 'react';
-import CypressPageIcon from '../icons/cypressPageIcon';
+import PageIcon from '../icons/PageIcon';
 import clsx from 'clsx';
 
 interface MobileSidebarProps {
@@ -17,7 +17,7 @@ export const nativeNavigations = [
   {
     title: 'Pages',
     id: 'pages',
-    customIcon: CypressPageIcon,
+    customIcon: PageIcon,
   },
 ] as const;
 

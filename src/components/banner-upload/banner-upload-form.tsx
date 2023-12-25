@@ -1,9 +1,5 @@
 'use client';
-import {
-  appFoldersType,
-  appWorkspacesType,
-  useAppState,
-} from '@/lib/providers/state-provider';
+import { appFoldersType, appWorkspacesType, useAppState } from '@/lib/providers/state-provider';
 import { Folder, workspace } from '@/lib/supabase/supabase.types';
 import { UploadBannerFormSchema } from '@/lib/types';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
@@ -14,11 +10,7 @@ import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Loader from '../global/Loader';
-import {
-  updateFile,
-  updateFolder,
-  updateWorkspace,
-} from '@/lib/supabase/queries';
+import { updateFile, updateFolder, updateWorkspace } from '@/lib/supabase/queries';
 
 interface BannerUploadFormProps {
   dirType: 'workspace' | 'file' | 'folder';
@@ -91,17 +83,14 @@ const BannerUploadForm: React.FC<BannerUploadFormProps> = ({ dirType, id }) => {
         });
         await updateWorkspace({ bannerUrl: filePath }, id);
       }
-    } catch (error) {}
+    } catch (error) { }
   };
   return (
     <form
       onSubmit={handleSubmit(onSubmitHandler)}
       className="flex flex-col gap-2"
     >
-      <Label
-        className="text-sm text-muted-foreground"
-        htmlFor="bannerImage"
-      >
+      <Label className="text-sm text-muted-foreground" htmlFor="bannerImage">
         Banner Image
       </Label>
       <Input
