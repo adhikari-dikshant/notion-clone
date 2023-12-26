@@ -23,10 +23,7 @@ const CustomCard: React.FC<CustomCardProps> = ({
     >
       <CardHeader>{cardHeader}</CardHeader>
       <CardContent
-        className="grid
-        gap-4
-      "
-      >
+        className="grid gap-4">
         {cardContent}
       </CardContent>
       <CardFooter>{cardFooter}</CardFooter>

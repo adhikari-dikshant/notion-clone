@@ -152,7 +152,7 @@ const Header = () => {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <aside className="flexw-full gap-2 justify-end">
+      <aside className="flex w-full gap-2 justify-end">
         <Link href={'/login'}>
           <Button
             variant="btn-secondary"

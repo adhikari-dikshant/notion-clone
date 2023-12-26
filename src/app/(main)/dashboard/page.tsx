@@ -27,15 +27,7 @@ const DashboardPage = async () => {
 
   if (!workspace)
     return (
-      <div
-        className="bg-background
-        h-screen
-        w-screen
-        flex
-        justify-center
-        items-center
-  "
-      >
+      <div className="bg-background h-screen w-screen flex justify-center items-center">
         <DashboardSetup
           user={user}
           subscription={subscription}

@@ -1,11 +1,10 @@
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-    experimental: {
-        serverActions: true,
-    },
+    /* config options here */
     images: {
-        domains: ['sdkqkmmkeekarzyobckn.supabase.co']
+        domains: ['wotsremgkrxwealebvnm.supabase.co']
     }
 }
-
 module.exports = nextConfig

@@ -255,7 +255,6 @@ export const getActiveProductsWithPrice = async () => {
   try {
     const res = await db.query.products.findMany({
       where: (pro, { eq }) => eq(pro.active, true),
-
       with: {
         prices: {
           where: (pri, { eq }) => eq(pri.active, true),
