@@ -1,13 +1,7 @@
 import Stripe from 'stripe';
 import { Price, Product, Subscription } from '../supabase/supabase.types';
 import db from '../supabase/db';
-import {
-  customers,
-  prices,
-  products,
-  subscriptions,
-  users,
-} from '../../../migrations/schema';
+import { customers, prices, products, subscriptions, users } from '../../../migrations/schema';
 import { stripe } from './index';
 import { eq } from 'drizzle-orm';
 import { toDateTime } from '../utils';
@@ -73,11 +67,11 @@ export const createOrRetrieveCustomer = async ({
     return response.stripeCustomerId;
   } catch (error) {
     const customerData: { metadata: { supabaseUUID: string }; email?: string } =
-      {
-        metadata: {
-          supabaseUUID: uuid,
-        },
-      };
+    {
+      metadata: {
+        supabaseUUID: uuid,
+      },
+    };
     if (email) customerData.email = email;
     try {
       const customer = await stripe.customers.create(customerData);
@@ -128,7 +122,7 @@ export const manageSubscriptionStatusChange = async (
     const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
       expand: ['default_payment_method'],
     });
-    console.log('🟢UPDATED to  ',subscription.status);
+    console.log('🟢UPDATED to  ', subscription.status);
 
     const subscriptionData: Subscription = {
       id: subscription.id,
